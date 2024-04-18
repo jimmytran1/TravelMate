@@ -1,13 +1,12 @@
-import './App.css';
-import Landing from './components/Landing';
-import Navbar from './components/Navbar';
+import React from 'react';
+import Signup from './pages/Signup';
+import Login from './pages/Login'
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Landing />
-    </div>
+      <div className="App">
+        <Signup />
+      </div>
   );
 }
 

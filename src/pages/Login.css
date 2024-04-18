@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #F49F0A;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 1200px; /* Adjust width as needed */
+    background: #fff;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.login-header {
+    margin-bottom: 2rem;
+}
+
+.login-logo {
+    max-width: 400px; /* Adjust size as needed */
+    margin-bottom: 1rem;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.remember-me {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.forgot-password {
+    float: right;
+    color: #3498db;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+.sign-in-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #F49F0A; /* Adjust button color as needed */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #ccc;
+}
+
+.or {
+    padding: 0 1rem;
+    color: #888;
+}
+
+.social-login {
+    margin-bottom: 1rem;
+}
+
+.social-button {
+    padding: 10px;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.signup {
+    margin-top: 1rem;
+}
+
+.signup-link {
+    color: #3498db;
+    text-decoration: none;
+}
+
+/* Add additional styles for social buttons and responsive design */
