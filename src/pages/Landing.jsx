@@ -1,26 +1,25 @@
 import React from 'react'
 import './Landing.css';
 import Logo from '../assets/logo.jpg'
-import { Link } from 'react-router-dom'
 
 export default function Landing() {
   return (
     <>
     <nav>
       <div className="nav__container">
-        <Link to="/">
+        <a href="/">
           <img src={Logo} className="logo" alt="" />
-        </Link>
+        </a>
         <ul className="nav__links">
           <li className="nav__list">
-            <Link to="/login" className="nav__link">
+            <a href="/login" className="nav__link">
               Login
-            </Link>
+            </a>
           </li>
           <li className="nav__list">
-            <Link to="/signup" className="nav__link nav__link--primary">
+            <a href="/signup" className="nav__link nav__link--primary">
               Sign up
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
