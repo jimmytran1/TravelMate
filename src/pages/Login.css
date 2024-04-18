@@ -5,19 +5,12 @@
     font-family: Arial, sans-serif;
 }
 
-body, html {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-}
-
 h1 {
     color: #F49F0A;
 }
 
 .login-container {
+    margin: 0 auto;
     width: 100%;
     max-width: 1200px; /* Adjust width as needed */
     background: #fff;

@@ -29,7 +29,7 @@ export default function Login() {
           <button className="social-button">T</button>
         </div>
         <div className="signup">
-          Don't have an account? <a href="/login" className="signup-link">Signup</a>
+          Don't have an account? <a href="/signup" className="signup-link">Sign Up</a>
         </div>
       </form>
     </div>

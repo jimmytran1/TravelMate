@@ -25,7 +25,7 @@ export default function Signup() {
           <button className="social-button">T</button>
         </div>
         <div className="signup">
-          Already have an account? <a href="/login" className="signup-link">Login</a>
+          Already have an account? <a href="/login" className="signup-link">Log In</a>
         </div>
       </form>
     </div>
