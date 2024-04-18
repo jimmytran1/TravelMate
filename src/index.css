@@ -532,14 +532,15 @@ header {
 }
 
 .places-visited-title {
-  color: #F49F0A;
+  font-size: 1.5rem;
 }
 
 .info-body {
+  width: 1200px;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between; /* This centers the flex items (cards) horizontally */
-  flex-wrap: wrap; /* This allows cards to wrap onto the next line if there are too many to fit */
-  gap: 20px; /* Adjust the space between the cards */
-  margin-top: 20px; /* Space between text and the cards */
+  justify-content: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }

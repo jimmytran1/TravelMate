@@ -14,10 +14,15 @@ export default function Profile() {
         <div className="profile-placeholder"></div>
         <div className="user-container">
             <Biography text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?"/>
-            <h2 className="places-visited-title">Places You Visited</h2>
-            <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
-            <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
-            <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
+            <h2 className="places-visited-title ">Places You Visited</h2>
+            <div className="info-body">
+                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
+                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
+                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
+                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
+                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
+                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
+            </div>
         </div>
     </div>
   )
