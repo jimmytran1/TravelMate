@@ -7,7 +7,7 @@ export default function Login() {
     <div className="login-container">
       <div className="login-header">
         <img src={Logo} alt="TravelMate Logo" className="login-logo" />
-        <h1>Welcome back!</h1>
+        <h1 className="login__header">Welcome back!</h1>
       </div>
       <form className="login-form">
         <input type="email" placeholder="Email" required />
