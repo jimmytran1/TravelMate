@@ -6,7 +6,7 @@ export default function Signup() {
     <div className="login-container">
       <div className="login-header">
         <img src={Logo} alt="TravelMate Logo" className="login-logo" />
-        <h1>Sign up!</h1>
+        <h1 className='orange'>Sign up!</h1>
       </div>
       <form className="login-form">
         <input type="text" placeholder="Name" required />

@@ -3,11 +3,11 @@ import Landing from './pages/Landing';
 import Signup from './pages/Signup';
 import Login from './pages/Login'
 import Home from './pages/Home';
+import Discover from './pages/Discover';
 import Profile from './pages/Profile'
 import AdditionalInfo from './pages/AdditionalInfo';
 import Itinerary from './pages/Itinerary';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 
 function App() {
      return  (
@@ -25,7 +25,11 @@ function App() {
           <Route 
           path="/profile" element={<Profile />} />
           <Route path="/signupinfo" element={<AdditionalInfo />} />
+<<<<<<< Updated upstream
           <Route path="/itinerary" element={<Itinerary />} />
+=======
+          <Route path="/discover" element={<Discover />} />
+>>>>>>> Stashed changes
         </Routes>
       </div>
       </Router>
