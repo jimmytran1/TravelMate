@@ -10,7 +10,7 @@ export default function Nav() {
         </a>
         <ul className="nav__links">
           <li className="nav__list">
-            <a href="/login" className="nav__link">
+            <a href="/home" className="nav__link">
               Home
             </a>
           </li>

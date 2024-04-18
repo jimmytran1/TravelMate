@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Home from './pages/Home';
 import Profile from './pages/Profile'
 import AdditionalInfo from './pages/AdditionalInfo';
+import Itinerary from './pages/Itinerary';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route 
           path="/profile" element={<Profile />} />
           <Route path="/signupinfo" element={<AdditionalInfo />} />
+          <Route path="/itinerary" element={<Itinerary />} />
         </Routes>
       </div>
       </Router>
