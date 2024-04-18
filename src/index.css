@@ -442,3 +442,104 @@ header {
   color: white;
   border-color: #F49F0A;
 } */
+
+/* USERPROFILE */
+.user-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1300px;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.user-profile-background {
+  position: relative;
+  background: linear-gradient(to bottom, #FFF, #BBDEF0);
+  border-radius: 20px;
+  padding: 20px;
+  height: 15vh;
+  width: 100%;
+  margin: auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-placeholder {
+  margin-bottom: 170px;
+}
+
+.user-profile img {
+  border-radius: 50%; 
+  width: 125px; 
+  height: 125px; 
+  object-fit: cover; 
+  margin-bottom: 10px;
+}
+
+.user-profile h1 {
+  font-size: 25px;
+  margin: 10px 0;
+}
+
+.user-profile ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.user-profile li {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #989898;
+}
+
+.user-profile li span {
+  font-weight: bold;
+}
+
+/* BIOGRAPHY */
+.biography {
+  text-align: center;
+  padding: 20px;
+}
+
+.biography h3 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.biography p {
+  margin-top: 10px;
+  text-align: left;
+  color: #989898;
+}
+
+/* Places Visited */
+.user-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.places-visited-title {
+  color: #F49F0A;
+}
+
+.info-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between; /* This centers the flex items (cards) horizontally */
+  flex-wrap: wrap; /* This allows cards to wrap onto the next line if there are too many to fit */
+  gap: 20px; /* Adjust the space between the cards */
+  margin-top: 20px; /* Space between text and the cards */
+}
