@@ -1,5 +1,4 @@
 import React from 'react'
-import './Landing.css';
 import Logo from '../assets/logo.jpg'
 
 export default function Landing() {
