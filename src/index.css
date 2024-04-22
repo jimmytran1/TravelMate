@@ -751,3 +751,125 @@ input[type="radio"]:checked + label:hover {
   overflow-y: hidden;
   white-space: nowrap;
 }
+
+/* Discover Page*/
+.discover-title {
+  font-size: 20px;
+  color: #F49F0A;
+  margin: 0;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* Post */
+
+.post-card {
+  max-width: calc(50% - 20px);
+  margin: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+
+.header, .footer {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  max-height: 5vh;
+}
+
+.profile-placeholder {
+  width: 40px;
+  height: 40px;
+  background-color: #cccccc;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.user-details .name {
+  font-weight: bold;
+}
+
+.user-details .location {
+  font-size: 0.8em;
+  color: #777;
+}
+
+.date {
+  font-size: 0.8em;
+  color: #777;
+}
+
+.post-image {
+  width: 100%;
+  display: block;
+}
+
+.post-content {
+  padding: 15px;
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+}
+
+.likes-count {
+  font-weight: bold;
+}
+
+
+/* New Post form*/
+
+.new-post-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px; /* Adjust to fit your design */
+  margin: 20px auto;
+}
+
+.new-post-form input,
+.new-post-form textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.new-post-form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.new-post-form button:hover {
+  background-color: #0056b3;
+}
