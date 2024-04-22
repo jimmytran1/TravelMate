@@ -5,9 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faLocationDot, faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faLocationDot, faChevronDown, faHeart } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faLocationDot, faChevronDown)
+library.add(faLocationDot, faChevronDown, faHeart)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
