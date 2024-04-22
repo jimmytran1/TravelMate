@@ -1,7 +1,8 @@
 import React from 'react'
 import Logo from '../assets/logo.jpg'
+import NavButtons from './NavButtons'
 
-export default function Nav() {
+export default function Nav({ btn }) {
   return (
     <nav>
       <div className="nav__container">
@@ -9,31 +10,7 @@ export default function Nav() {
           <img src={Logo} className="logo" alt="" />
         </a>
         <ul className="nav__links">
-          <li className="nav__list">
-            <a href="/home" className="nav__link">
-              Home
-            </a>
-          </li>
-          <li className="nav__list">
-            <a href="/messages" className="nav__link">
-              Messages
-            </a>
-          </li>
-          <li className="nav__list">
-            <a href="/friends" className="nav__link">
-              Friends
-            </a>
-          </li>
-          <li className="nav__list">
-            <a href="/discover" className="nav__link">
-              Discover
-            </a>
-          </li>
-          <li className="nav__list">
-            <a href="/profile" className="nav__link nav__link--primary">
-              Profile
-            </a>
-          </li>
+          <NavButtons text={["Home", "Discover", "Profile", "Sign Out"]} defaultButton={btn}/>
         </ul>
       </div>
     </nav>

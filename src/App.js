@@ -25,11 +25,8 @@ function App() {
           <Route 
           path="/profile" element={<Profile />} />
           <Route path="/signupinfo" element={<AdditionalInfo />} />
-<<<<<<< Updated upstream
           <Route path="/itinerary" element={<Itinerary />} />
-=======
           <Route path="/discover" element={<Discover />} />
->>>>>>> Stashed changes
         </Routes>
       </div>
       </Router>
