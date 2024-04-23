@@ -8,16 +8,19 @@ import Profile from './pages/Profile'
 import AdditionalInfo from './pages/AdditionalInfo';
 import Itinerary from './pages/Itinerary';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './stores/store';
 
 function App() {
      return  (
     <Router>
       <div className="App">
+      <Provider store={store}>
         <Routes>
           <Route 
           path="/" element={<Landing />} />
           <Route 
-          path="/login" element={<Login />} />
+          path="/login" render={()=><Home />} />
           <Route 
           path="/signup" element={<Signup />} />
           <Route 
@@ -28,6 +31,7 @@ function App() {
           <Route path="/itinerary" element={<Itinerary />} />
           <Route path="/discover" element={<Discover />} />
         </Routes>
+        </Provider>
       </div>
       </Router>
   );

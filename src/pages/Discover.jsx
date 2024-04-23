@@ -61,7 +61,7 @@ export default function Discover() {
 
   return (
     <div>
-      <Nav />
+      <Nav btn="Discover"/>
       <div className="home-container">
         <div className="filter-container">
           <h1 className="discover-title">What's New</h1>
