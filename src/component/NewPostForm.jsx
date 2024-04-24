@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { savePost } from '../actions/PostActions';
 
 const NewPostForm = ({ onNewPost }) => {
+  const dispatch = useDispatch();
   const [postData, setPostData] = useState({
     name: '',
     location: '',
@@ -11,12 +14,11 @@ const NewPostForm = ({ onNewPost }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const date = new Date().toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' });
-    onNewPost({
-      ...postData,
-      date // The date is automatically set to now
-    });
+    const updatedPostData = { ...postData, date }; // Include the updated date in the postData
+    dispatch(savePost(updatedPostData)); // Dispatch savePost with the updated postData
     setPostData({ name: '', location: '', image: '', content: '' }); // Reset form
   };
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;

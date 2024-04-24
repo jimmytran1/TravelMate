@@ -4,6 +4,8 @@ const Constants = {
     FETCH_ITINERARIES: 'FETCH_ITINERARIES',
     FETCH_ITINERARY: 'FETCH_ITINERARY',
     SET_ITINERARY: 'SET_ITINERARY',
+    FETCH_POSTS: 'FETCH_POSTS',
+    SET_POSTS: 'SET_POSTS'
 }
 
 export default Constants;

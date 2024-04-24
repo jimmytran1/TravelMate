@@ -21,7 +21,7 @@ export default function Post({ name, location, content, image, likes, date }) {
       <div className="footer">
         <div className="likes">
           <FontAwesomeIcon icon="fa-heart" />
-          <span className="likes-count">{likes}</span>
+          <span className="likes-count"> {likes}</span>
         </div>
       </div>
     </div>

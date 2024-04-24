@@ -14,10 +14,10 @@ const itineraryReducer = (state = initialState, action) => {
                   updated['selectedItinerary'] = action.itineraries[0];
                   return updated;
             case constants.SET_ITINERARY:
-                  updated['selectedItinerary'] = action.selectedMovie;
+                  updated['selectedItinerary'] = action.selectedItinerary;
                   return updated;
             case constants.FETCH_ITINERARY:
-                  updated['selectedItinerary'] = action.selectedMovie;
+                  updated['selectedItinerary'] = action.selectedItinerary;
                   return updated;
             default:
                   return state;

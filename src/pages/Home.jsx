@@ -20,12 +20,12 @@ class Home extends Component {
 
   handleSelect(selectedIndex, e) {
       const {dispatch} = this.props;
-      dispatch(setItinerary(this.props.movies[selectedIndex]));
+      dispatch(setItinerary(this.props.itineraries[selectedIndex]));
   }
 
-  handleClick = (movie) => {
+  handleClick = (itinerary) => {
       const {dispatch} = this.props;
-      dispatch(setItinerary(movie));
+      dispatch(setItinerary(itinerary));
   }
 
   render() {
