@@ -375,6 +375,10 @@ header {
   margin: 36px 0;
 }
 
+.info-bio {
+  width: 800px;
+}
+
 .info-body {
   display: grid;
   width: 1100px;

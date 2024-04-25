@@ -8,8 +8,22 @@ export default function AdditionalInfo() {
         <h1 className="info-header-title">Let's get to know you!</h1>
       </div>
       <div className="info-body-container">
+        <div className="info-bio">
+        <div className="info-body-header info-visit">
+                <h3 className="info-title">Biography</h3>
+            </div>
+            <form className="new-post-form">
+      <input
+        type="text"
+        name="content"
+        placeholder="Enter a small biography about yourself"
+        // value={postData.name}
+        required
+      />
+      </form>
+        </div>
         <div className="info-hobby">
-          <div className="info-body-header">
+          <div className="info-body-header info-visit">
             <h3 className="info-title">What are your hobbies?</h3>
             <h4 className="info-description">Choose one or more</h4>
           </div>
@@ -22,7 +36,7 @@ export default function AdditionalInfo() {
           <button className="hobby-btn">Hiking</button>
           </div>
         </div>
-        <div className="info-visited">
+        <div className="info-visited info-visit">
             <div className="info-body-header">
                 <h3 className="info-title">What places have you visited already?</h3>
             </div>

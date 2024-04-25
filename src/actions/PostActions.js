@@ -8,10 +8,10 @@ function postsFetched(posts) {
     }
 }
 
-function postSet(itinerary) {
+function postSet(post) {
     return {
         type: actionTypes.SET_POSTS,
-        selectedPost: itinerary
+        selectedPost: post
     }
 }
 

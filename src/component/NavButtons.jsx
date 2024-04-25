@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+import { logoutUser } from '../actions/authActions';
+import { connect } from 'react-redux';
 
-function NavButtons({ text, defaultButton }) {
+function NavButtons({ dispatch, text, defaultButton }) {
     const [selectedButton, setSelectedButton] = useState(defaultButton);
 
     const handleButtonClick = (buttonText) => {
-        setSelectedButton(buttonText === selectedButton ? defaultButton : buttonText);
-
+        if (buttonText === "Sign Out") {
+            dispatch(logoutUser());
+        }
+        else {
+            setSelectedButton(buttonText === selectedButton ? defaultButton : buttonText);
+        }
     };
 
     return (
@@ -24,4 +30,4 @@ function NavButtons({ text, defaultButton }) {
     );
 }
 
-export default NavButtons;
+export default connect()(NavButtons);

@@ -3,6 +3,7 @@ import actionTypes from '../constants/actionTypes';
 const env = process.env;
 
 function userLoggedIn(username) {
+    console.log('Dispatching USER_LOGGEDIN action with username:', username);
     return {
         type: actionTypes.USER_LOGGEDIN,
         username: username
@@ -29,13 +30,16 @@ export function submitLogin(data) {
             if (!response.ok) {
                 throw Error(response.statusText);
             }
+            console.log('Response:',response.statusText);
             return response.json()
         }).then((res) => {
             localStorage.setItem('username', data.username);
             localStorage.setItem('token', res.token);
-
             dispatch(userLoggedIn(data.username));
-        }).catch((e) => console.log(e));
+        }).catch((error) => {
+            console.log('Error:', error);
+        });
+        
     }
 }
 

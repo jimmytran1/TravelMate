@@ -1,7 +1,31 @@
-import React from 'react'
-import Logo from '../assets/logo.jpg'
+import React, { Component } from 'react';
+import { submitLogin } from '../actions/authActions';
+import { connect } from 'react-redux';
+import Logo from '../assets/logo.jpg';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from 'react-router-dom'
 
-export default function Login() {
+const Login = ({ dispatch }) => {
+  const navigate = useNavigate(); // Access the navigate function
+
+  const [details, setDetails] = React.useState({
+    username: '',
+    password: ''
+  });
+
+  const updateDetails = event => {
+    const { id, value } = event.target;
+    setDetails(prevState => ({
+      ...prevState,
+      [id]: value
+    }));
+  };
+
+  const login = event => {
+    event.preventDefault();
+    dispatch(submitLogin(details));
+    navigate('/home'); // Use navigate to redirect
+  };
+
   return (
     <div className="login-container">
       <div className="login-header">
@@ -9,14 +33,14 @@ export default function Login() {
         <h1 className="login__header">Welcome back!</h1>
       </div>
       <form className="login-form">
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
+        <input id="username" type="email" placeholder="Email" required onChange={updateDetails} value={details.username}/>
+        <input id="password" type="password" placeholder="Password" required  onChange={updateDetails} value={details.password}/>
         <div className="remember-me">
           <input type="checkbox" id="rememberMe" />
           <label htmlFor="rememberMe"> Remember me</label>
         </div>
         <a href="/forgot-password" className="forgot-password">Forgot password?</a>
-        <button type="submit" className="sign-in-button">Log In</button>
+        <button type="submit" className="sign-in-button" onClick={login}>Log In</button>
         <div className="divider">
           <hr className="line" />
           <span className="or">continue with</span>
@@ -32,5 +56,7 @@ export default function Login() {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
+
+export default connect()(Login);

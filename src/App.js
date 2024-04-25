@@ -20,7 +20,7 @@ function App() {
           <Route 
           path="/" element={<Landing />} />
           <Route 
-          path="/login" render={()=><Home />} />
+          path="/login" element={<Login />} />
           <Route 
           path="/signup" element={<Signup />} />
           <Route 
