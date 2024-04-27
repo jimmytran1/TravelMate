@@ -4,6 +4,7 @@ import logger from 'redux-logger'; // Import logger directly
 import authReducer from "../reducers/authReducer";
 import itineraryReducer from "../reducers/itineraryReducer";
 import postReducer from "../reducers/postReducer"
+import placeReducer from '../reducers/placeReducer';
 
 const middlewares = [thunk];
 
@@ -15,7 +16,8 @@ const store = createStore(
     combineReducers({
         auth: authReducer,
         itinerary: itineraryReducer,
-        post: postReducer
+        post: postReducer,
+        place: placeReducer
     }),
     applyMiddleware(thunk)
 

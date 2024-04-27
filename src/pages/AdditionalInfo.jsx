@@ -1,73 +1,244 @@
-import React from "react";
-import DestinationCard from "../component/DestinationCard";
+import React, { Component } from "react";
+import SelectDestinationCard from "../component/SelectDestinationCard";
+import MultiButtonGroup from "../component/MultiButtonGroup";
+import { fetchPlaces } from "../actions/PlacesActions";
+import { updateUser } from "../actions/authActions";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-export default function AdditionalInfo() {
-  return (
-    <div className="info-container">
-      <div className="info-header">
-        <h1 className="info-header-title">Let's get to know you!</h1>
-      </div>
-      <div className="info-body-container">
-        <div className="info-bio">
-        <div className="info-body-header info-visit">
-                <h3 className="info-title">Biography</h3>
+// Functional component to use useNavigate hook
+const NavigateHandler = ({ children }) => {
+  const navigate = useNavigate();
+  return children(navigate);
+};
+
+class AdditionalInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      formData: {
+        biography: "",
+        imageUrl: "",
+        hobby: "",
+        placesToVisit: [],
+        placesVisited: [],
+      },
+    };
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchPlaces()).then(() => {});
+  }
+
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        [name]: value,
+      },
+    });
+  };
+
+  handleHobbyChange = (hobby) => {
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        hobby: [hobby],
+      },
+    });
+  };
+
+  handleVisitChange = (place) => {
+    const { placesToVisit } = this.state.formData;
+    const index = placesToVisit.indexOf(place);
+    let updatedPlacesToVisit;
+
+    if (index === -1) {
+      // If not already selected, add to the array
+      updatedPlacesToVisit = [...placesToVisit, place];
+    } else {
+      // If already selected, remove from the array
+      updatedPlacesToVisit = [
+        ...placesToVisit.slice(0, index),
+        ...placesToVisit.slice(index + 1),
+      ];
+    }
+
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        placesToVisit: updatedPlacesToVisit,
+      },
+    });
+  };
+
+  handleVisitedChange = (place) => {
+    const { placesVisited } = this.state.formData;
+    const index = placesVisited.indexOf(place);
+    let updatedPlacesVisited;
+
+    if (index === -1) {
+      // If not already selected, add to the array
+      updatedPlacesVisited = [...placesVisited, place];
+    } else {
+      // If already selected, remove from the array
+      updatedPlacesVisited = [
+        ...placesVisited.slice(0, index),
+        ...placesVisited.slice(index + 1),
+      ];
+    }
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        placesVisited: updatedPlacesVisited,
+      },
+    });
+  };
+
+  handleSubmit = (e, navigate) => {
+    e.preventDefault();
+    const username = localStorage.getItem("username");
+    const { biography, imageUrl, hobby, placesToVisit, placesVisited } =
+      this.state.formData;
+
+    // Validate and format hobby, placesToVisit, and placesVisited
+    const validateArray = (array) =>
+      Array.isArray(array)
+        ? array.filter((item) => typeof item === "string")
+        : [];
+
+    const userData = {
+      biography,
+      imageUrl,
+      hobby: validateArray(hobby[0]),
+      placesToVisit: placesToVisit,
+      placesVisited: placesVisited,
+    };
+
+    this.props.dispatch(updateUser(username, userData)).then(() => {
+      navigate("/home"); // Redirect to /home after form is submitted
+    });
+  };
+
+  render() {
+    const { places } = this.props;
+    const { biography, imageUrl } = this.state.formData;
+
+    if (!places) {
+      return <div>Loading....</div>;
+    }
+    return (
+      <div className="info-container">
+        <div className="info-header">
+          <h1 className="info-header-title">Let's get to know you!</h1>
+        </div>
+        <div className="info-body-container">
+          <div className="info-bio">
+            <div className="info-body-header info-visit">
+              <h3 className="info-title">Biography</h3>
             </div>
             <form className="new-post-form">
-      <input
-        type="text"
-        name="content"
-        placeholder="Enter a small biography about yourself"
-        // value={postData.name}
-        required
-      />
-      </form>
-        </div>
-        <div className="info-hobby">
-          <div className="info-body-header info-visit">
-            <h3 className="info-title">What are your hobbies?</h3>
-            <h4 className="info-description">Choose one or more</h4>
+              <input
+                type="text"
+                name="biography"
+                placeholder="Enter a small biography about yourself"
+                value={biography}
+                onChange={this.handleInputChange}
+                required
+              />
+            </form>
           </div>
-          <div className="info-hobby-body">
-          <button className="hobby-btn">Swimming</button>
-          <button className="hobby-btn">Photography</button>
-          <button className="hobby-btn">Dance</button>
-          <button className="hobby-btn">Cooking</button>
-          <button className="hobby-btn">Music</button>
-          <button className="hobby-btn">Hiking</button>
+          <div className="info-bio">
+            <div className="info-body-header info-visit">
+              <h3 className="info-title">Profile Picture</h3>
+            </div>
+            <form className="new-post-form">
+              <input
+                type="text"
+                name="imageUrl"
+                placeholder="Enter link to image"
+                value={imageUrl}
+                onChange={this.handleInputChange}
+                required
+              />
+            </form>
           </div>
-        </div>
-        <div className="info-visited info-visit">
+          <div className="info-hobby">
+            <div className="info-body-header info-visit">
+              <h3 className="info-title">What are your hobbies?</h3>
+              <h4 className="info-description">Choose one or more</h4>
+            </div>
+            <div className="info-hobby-body">
+              <MultiButtonGroup
+                text={[
+                  "Swimming",
+                  "Photography",
+                  "Dance",
+                  "Cooking",
+                  "Music",
+                  "Hiking",
+                ]}
+                onSelect={this.handleHobbyChange}
+              />
+            </div>
+          </div>
+          <div className="info-visited info-visit">
             <div className="info-body-header">
-                <h3 className="info-title">What places have you visited already?</h3>
+              <h3 className="info-title">
+                What places have you visited already?
+              </h3>
             </div>
             <div className="info-body">
-              <DestinationCard imageUrl="https://www.nationsonline.org/gallery/USA/Times-Square-New-York.jpg" title="New York" location="New York City" ></DestinationCard>
-              <DestinationCard imageUrl="https://blog.goway.com/globetrotting/wp-content/uploads/2018/03/Two-geishas-at-Sensoji-Temple-in-Asakusa-Tokyo-Japan_667925704.jpg" title="Japan" location="Tokyo" ></DestinationCard>
-              <DestinationCard imageUrl="https://uceap.universityofcalifornia.edu/sites/default/files/marketing-images/life-in-city-images/paris-france-gallery-2.jpg" title="France" location="Paris" ></DestinationCard>
-              <DestinationCard imageUrl="https://static1.squarespace.com/static/55ee34aae4b0bf70212ada4c/57d9829837c5819632bc630b/5e06e89e74877f00dbb21494/1577545446402/keith-zhu-qaNcz43MeY8-unsplash+%281%29.jpg?format=1500w" title="Australia" location="Sydney" ></DestinationCard>
-              <DestinationCard imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Saint_Basil%27s_Cathedral_and_the_Red_Square.jpg/1200px-Saint_Basil%27s_Cathedral_and_the_Red_Square.jpg" title="Russia" location="Moscow" ></DestinationCard>
-              <DestinationCard imageUrl="https://i.natgeofe.com/n/9e138c12-712d-41d4-9be9-5822a3251b5a/brandenburggate-berlin-germany_2x1.jpg" title="Germany" location="Berlin" ></DestinationCard>
-              <DestinationCard imageUrl="https://a.cdn-hotels.com/gdcs/production196/d170/348659c0-9beb-11e8-a1b5-0242ac110053.jpg?impolicy=fcrop&w=800&h=533&q=medium" title="Spain" location="Madrid" ></DestinationCard>
-              <DestinationCard imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Dubai_Skylines_at_night_%28Pexels_3787839%29.jpg/640px-Dubai_Skylines_at_night_%28Pexels_3787839%29.jpg" title="United Arab Emirates" location="Dubai" ></DestinationCard>
+              {places.map((place) => (
+                <SelectDestinationCard
+                  placeId={place._id}
+                  imageUrl={place.imageUrl}
+                  title={place.country}
+                  location={place.city}
+                  onVisitChange={this.handleVisitedChange}
+                />
+              ))}
             </div>
-        </div>
-        <div className="info-visit">
+          </div>
+          <div className="info-visit">
             <div className="info-body-header">
-                <h3 className="info-title">What places would you like to visit?</h3>
+              <h3 className="info-title">
+                What places would you like to visit?
+              </h3>
             </div>
             <div className="info-body">
-            <DestinationCard imageUrl="https://www.nationsonline.org/gallery/USA/Times-Square-New-York.jpg" title="New York" location="New York City" ></DestinationCard>
-              <DestinationCard imageUrl="https://blog.goway.com/globetrotting/wp-content/uploads/2018/03/Two-geishas-at-Sensoji-Temple-in-Asakusa-Tokyo-Japan_667925704.jpg" title="Japan" location="Tokyo" ></DestinationCard>
-              <DestinationCard imageUrl="https://uceap.universityofcalifornia.edu/sites/default/files/marketing-images/life-in-city-images/paris-france-gallery-2.jpg" title="France" location="Paris" ></DestinationCard>
-              <DestinationCard imageUrl="https://static1.squarespace.com/static/55ee34aae4b0bf70212ada4c/57d9829837c5819632bc630b/5e06e89e74877f00dbb21494/1577545446402/keith-zhu-qaNcz43MeY8-unsplash+%281%29.jpg?format=1500w" title="Australia" location="Sydney" ></DestinationCard>
-              <DestinationCard imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Saint_Basil%27s_Cathedral_and_the_Red_Square.jpg/1200px-Saint_Basil%27s_Cathedral_and_the_Red_Square.jpg" title="Russia" location="Moscow" ></DestinationCard>
-              <DestinationCard imageUrl="https://i.natgeofe.com/n/9e138c12-712d-41d4-9be9-5822a3251b5a/brandenburggate-berlin-germany_2x1.jpg" title="Germany" location="Berlin" ></DestinationCard>
-              <DestinationCard imageUrl="https://a.cdn-hotels.com/gdcs/production196/d170/348659c0-9beb-11e8-a1b5-0242ac110053.jpg?impolicy=fcrop&w=800&h=533&q=medium" title="Spain" location="Madrid" ></DestinationCard>
-              <DestinationCard imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Dubai_Skylines_at_night_%28Pexels_3787839%29.jpg/640px-Dubai_Skylines_at_night_%28Pexels_3787839%29.jpg" title="United Arab Emirates" location="Dubai" ></DestinationCard>
+              {places.map((place) => (
+                <SelectDestinationCard
+                  placeId={place._id}
+                  imageUrl={place.imageUrl}
+                  title={place.country}
+                  location={place.city}
+                  onVisitChange={this.handleVisitChange}
+                />
+              ))}
             </div>
-            <button type="submit" className="sign-in-button next-button">Next</button>
+            <NavigateHandler>
+              {(navigate) => (
+                <button
+                  type="submit"
+                  className="sign-in-button next-button"
+                  onClick={(e) => this.handleSubmit(e, navigate)}
+                >
+                  Next
+                </button>
+              )}
+            </NavigateHandler>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+const mapStateToProps = (state) => ({
+  places: state.place.places, // Assuming places is your reducer key
+});
+
+export default connect(mapStateToProps)(AdditionalInfo);

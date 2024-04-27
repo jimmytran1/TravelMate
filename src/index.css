@@ -207,6 +207,7 @@ header {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: for a slight shadow */
+  cursor: pointer;
 }
 
 .destination-image {
@@ -369,6 +370,12 @@ header {
   width: 146px;
   background-color: transparent;
   margin-right: 40px;
+}
+
+.category.selected {
+  background-color: #f49f0a;
+  border-color: #f49f0a;
+  color: white;
 }
 
 .info-visited {
