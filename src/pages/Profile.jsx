@@ -1,29 +1,61 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Nav from '../component/Nav'
 import DestinationCard from '../component/DestinationCard'
 import UserProfile from '../component/UserProfile'
 import Biography from '../component/Biography'
+import { fetchUser } from "../actions/UserActions";
+import { connect } from 'react-redux';
 
-export default function Profile() {
+class Profile extends Component {
+  componentDidMount() {
+      const username = localStorage.getItem("username");
+      const {dispatch} = this.props;
+      dispatch(fetchUser(username));
+  }
+
+  render() {
+    const { user } = this.props;
+    if (!user) {
+      return <div>Loading...</div>; // or any other loading indicator
+    }
+    const placesVisited = user.placesVisited;
+    console.log("User", placesVisited)
   return (
     <div>
         <Nav btn="Profile"/>
         <div className="user-profile-background">
         </div>
-        <UserProfile profilePicture="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" name="Tyrone Reeves" friends="24" groups="3" />
-        <div className="profile-placeholder"></div>
+        <UserProfile 
+  profilePicture={user.imageUrl} 
+  name={user.name} 
+  hobbies={user.hobby.join(', ')} 
+/>
         <div className="user-container">
-            <Biography text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?"/>
+        <Biography text={user.biography}/>
             <h2 className="places-visited-title ">Places You Visited</h2>
             <div className="info-body">
-                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
-                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
-                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
-                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
-                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
-                <DestinationCard imageUrl="https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg" title="New York" location="Manhattan" />
+            {Array.from({ length: 6 }).map((_, index) => {
+  const place = placesVisited[index];
+  return (
+    <DestinationCard
+      key={place ? place.placeId._id : `default-${index}`}
+      imageUrl={place ? place.placeId.imageUrl : "https://garden.spoonflower.com/c/2808368/p/f/m/wz4MJ0j3cdHpOHkTN5qdj7tovQRD_FFQl_DuHWO3th-bkCbrFGzA704q/Solid%20Mid%20Grey.jpg"}
+      title={place ? place.placeId.country : "N/A"}
+      location={place ? place.placeId.city : "N/A"}
+    />
+  );
+})}
             </div>
         </div>
     </div>
   )
 }
+}
+
+const mapStateToProps = state => {
+  return {
+    user: state.user.user
+  }
+}
+
+export default connect(mapStateToProps)(Profile);

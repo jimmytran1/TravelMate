@@ -667,6 +667,7 @@ input[type="radio"]:checked + label:hover {
   width: 100%;
   max-width: 1300px;
   margin-bottom: 36px;
+  margin-top: 180px;
 }
 
 .user-profile {

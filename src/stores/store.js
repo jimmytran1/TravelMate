@@ -5,6 +5,7 @@ import authReducer from "../reducers/authReducer";
 import itineraryReducer from "../reducers/itineraryReducer";
 import postReducer from "../reducers/postReducer"
 import placeReducer from '../reducers/placeReducer';
+import userReducer from '../reducers/userReducer';
 
 const middlewares = [thunk];
 
@@ -17,7 +18,8 @@ const store = createStore(
         auth: authReducer,
         itinerary: itineraryReducer,
         post: postReducer,
-        place: placeReducer
+        place: placeReducer,
+        user: userReducer
     }),
     applyMiddleware(thunk)
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { submitLogin } from '../actions/authActions';
 import { connect } from 'react-redux';
 import Logo from '../assets/logo.jpg';

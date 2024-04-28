@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { Component } from "react";
 import Nav from "../component/Nav";
 import NewPostForm from "../component/NewPostForm";
 import Post from "../component/Post";

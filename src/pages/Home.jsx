@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { Component } from "react";
 import Nav from "../component/Nav";
 import LocationDropDown from "../component/LocationDropDown";
 import DestinationCard from "../component/DestinationCard";
