@@ -6,7 +6,7 @@ export default function Nav({ btn }) {
   return (
     <nav>
       <div className="nav__container">
-        <a href="/">
+        <a href="/Home">
           <img src={Logo} className="logo" alt="" />
         </a>
         <ul className="nav__links">

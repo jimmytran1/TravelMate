@@ -563,9 +563,10 @@ input[type="radio"]:checked + label:hover {
 
 .vl {
   border-left: 1px solid #989898;
-  height: 850px;
+  height: 100%;
   margin-left: 64px;
   position: absolute;
+  
 }
 
 .detailed-itinerary-body {
@@ -592,6 +593,7 @@ input[type="radio"]:checked + label:hover {
   display: flex;
   margin-top: 24px;
   flex-direction: column;
+  position: relative;
 }
 
 .detailed-title {
@@ -667,7 +669,7 @@ input[type="radio"]:checked + label:hover {
   width: 100%;
   max-width: 1300px;
   margin-bottom: 36px;
-  margin-top: 180px;
+  margin-top: 140px;
 }
 
 .user-profile {

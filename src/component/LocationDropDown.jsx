@@ -12,8 +12,6 @@ export default function CarDropDown({location}) {
             <FontAwesomeIcon icon="fa-location-dot" /> 
             <select id="locations" name="locations" onChange={handleChange} className="custom-select">
                 <option value="">{location}</option>
-                <option value="France">France</option>
-                <option value="New York">New York</option>
             </select>
         </div>
     );

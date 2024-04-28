@@ -28,7 +28,7 @@ function App() {
           <Route 
           path="/profile" element={<Profile />} />
           <Route path="/signupinfo" element={<AdditionalInfo />} />
-          <Route path="/itinerary" element={<Itinerary />} />
+          <Route path="/itinerary/:itineraryId" element={<Itinerary />} />
           <Route path="/discover" element={<Discover />} />
         </Routes>
         </Provider>

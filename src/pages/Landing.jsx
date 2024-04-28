@@ -6,7 +6,7 @@ export default function Landing() {
     <>
     <nav>
       <div className="nav__container">
-        <a href="/home">
+        <a href="/">
           <img src={Logo} className="logo" alt="" />
         </a>
         <ul className="nav__links">

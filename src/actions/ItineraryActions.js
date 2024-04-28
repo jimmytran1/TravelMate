@@ -10,7 +10,7 @@ function itinerariesFetched(itineraries) {
 
 function itineraryFetched(itinerary) {
     return {
-        type: actionTypes.FETCH_ITINERARIES,
+        type: actionTypes.FETCH_ITINERARY,
         selectedItinerary: itinerary
     }
 }
