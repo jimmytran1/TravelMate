@@ -526,7 +526,6 @@ input[type="radio"]:checked + label:hover {
 }
 
 .img-container {
-  background-image: url("https://exploreshizuoka.jp/activities/wp-content/uploads/sites/2/2022/04/2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 60%;
@@ -586,7 +585,7 @@ input[type="radio"]:checked + label:hover {
 }
 
 .itinerary-body-container {
-  margin: 24px 0;
+  padding: 24px 0 36px;
 }
 
 .itinerary-body {
@@ -669,7 +668,7 @@ input[type="radio"]:checked + label:hover {
   width: 100%;
   max-width: 1300px;
   margin-bottom: 36px;
-  margin-top: 140px;
+  margin-top: 180px;
 }
 
 .user-profile {

@@ -5,6 +5,7 @@ import Post from "../component/Post";
 import { fetchPosts } from "../actions/PostActions";
 import { setPost } from "../actions/PostActions";
 import { connect } from 'react-redux';
+import ButtonGroup from "../component/ButtonGroup";
 
 
 class Discover extends Component {
@@ -28,9 +29,28 @@ class Discover extends Component {
       dispatch(setPost(post));
   }
 
+  state = {
+    selectedFilter: null
+  };
+
+  handleFilterSelect = (filter) => {
+    this.setState({ selectedFilter: filter });
+  };
+  
   render() {
     const { posts } = this.props;
-
+    const { selectedFilter } = this.state;
+  
+    let filteredPosts = [...posts];
+  
+    if (selectedFilter === "Popular") {
+      filteredPosts.sort((a, b) => b.likes - a.likes);
+    } else if (selectedFilter === "Newest") {
+      filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (selectedFilter === "Oldest") {
+      filteredPosts.sort((a, b) => new Date(a.date) - new Date(b.date));
+    }
+  
     if (!posts) {
       return <div>Loading....</div>;
     }
@@ -42,14 +62,18 @@ class Discover extends Component {
           <div className="filter-container">
             <h1 className="discover-title">What's New</h1>
             <div className="btn-container">
-              <button className="category">Explore</button>
-              <button className="category">Popular</button>
-              <button className="category">Newest</button>
-              <button className="category">Oldest</button>
+              <ButtonGroup
+                text={[
+                  "Popular",
+                  "Newest",
+                  "Oldest"
+                ]}
+                filterItineraries={this.handleFilterSelect}
+              />
             </div>
           </div>
           <div className="post-container">
-            {posts.map((post) => (
+            {filteredPosts.map((post) => (
               <Post
                 key={post.id}
                 name={post.name}
@@ -64,8 +88,8 @@ class Discover extends Component {
           <NewPostForm onNewPost={this.handleClick} />
         </div>
       </div>
-    )
-      }
+    );
+  }  
   }
 
 const mapStateToProps = state => {

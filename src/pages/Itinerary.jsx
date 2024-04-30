@@ -19,21 +19,24 @@ class Itinerary extends Component {
         return <div>Loading....</div>;
       }
       const itineraryList = this.props.selectedItinerary.itinerary;
+      console.log(this.props.selectedItinerary.imageUrl)
 
       return (
         <>
           <Nav />
-          <div className="itinerary-container">
+          <div className="img-container"
+      style={{
+        backgroundImage: `url(${this.props.selectedItinerary.imageUrl})`
+      }}>
             <div className="img-container">
               <div className="gradient__overlay overlay-2"></div>
               <button type="submit" className="sign-in-button add-button">
                 + Add
               </button>
               <div className="img-text">
-                <h6 className="img-title">A Day in the Sky</h6>
+                <h6 className="img-title">{this.props.selectedItinerary.title}</h6>
                 <p className="img-description">
-                  Enjoy a heart-filled day looking at the beautiful view of Mt.
-                  Fuji
+                  {this.props.selectedItinerary.description}
                 </p>
               </div>
             </div>

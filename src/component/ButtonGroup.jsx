@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
-function ButtonGroup({ text }) {
+function ButtonGroup({ text, filterItineraries }) {
     const [selectedButton, setSelectedButton] = useState(null);
 
     const handleButtonClick = (buttonText) => {
         setSelectedButton((prevSelectedButton) =>
             prevSelectedButton === buttonText ? null : buttonText
         );
+        filterItineraries(selectedButton === buttonText ? null : buttonText);
     };
 
     return (
