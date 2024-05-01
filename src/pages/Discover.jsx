@@ -72,6 +72,7 @@ class Discover extends Component {
               />
             </div>
           </div>
+          <NewPostForm onNewPost={this.handleClick} />
           <div className="post-container">
             {filteredPosts.map((post) => (
               <Post
@@ -85,7 +86,6 @@ class Discover extends Component {
               />
             ))}
           </div>
-          <NewPostForm onNewPost={this.handleClick} />
         </div>
       </div>
     );
