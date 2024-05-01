@@ -3,7 +3,7 @@ import Nav from "../component/Nav";
 import DestinationCard from "../component/DestinationCard";
 import UserProfile from "../component/UserProfile";
 import Biography from "../component/Biography";
-import { fetchUser } from "../actions/UserActions";
+import { fetchUser } from "../actions/userActions";
 import { connect } from "react-redux";
 
 class Profile extends Component {
