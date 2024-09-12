@@ -86,6 +86,7 @@ class Discover extends Component {
               />
             ))}
           </div>
+
         </div>
       </div>
     );

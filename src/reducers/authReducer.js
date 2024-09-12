@@ -13,11 +13,13 @@ const authReducer = (state = initialState, action) => {
         case constants.USER_LOGGEDIN:
             updated['loggedIn'] = true;
             updated['username'] = action.username;
+            localStorage.setItem('username', action.username);
             return updated;
 
         case constants.USER_LOGOUT:
             updated['loggedIn'] = false;
             updated['username'] = '';
+            localStorage.removeItem('username'); 
             return updated;
 
         default:
